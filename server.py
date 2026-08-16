@@ -11,6 +11,8 @@ def render_template_html():
 def emotion_detector_handler():
     text_to_analyze = request.args.get("textToAnalyze")
     result = emotion_detector(text_to_analyze)
+    if (result['dominant_emotion'] == None):
+        return "Invalid text! Please try again."
     return result, 200
 
 if __name__ == '__main__':
